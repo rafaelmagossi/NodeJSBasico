@@ -1,8 +1,22 @@
-// criar novo projeto -> npm init
+var http = require('http');
 
-console.log('Hello World');
+function handle(request, response) {
+    response.writeHead(200, {
+        'Content-Type': 'text/html'
+    });
+    response.write('<!DOCTYPE "html">');
+    response.write('<html>');
+    response.write('<body>');
+    response.write('<head><title>Http Module</title></head>');
+    response.write('<h1>Hello from http odule SON</h1>')
+    response.write('</body>');
+    response.write('</html>');
 
-var a = '2';
-var b = 2;
-var c = a + b;
-console.log('c ->', c);
+    response.end();
+}
+
+var server = http.createServer(handle);
+
+server.listen(3000, function () {
+    console.log('Server is listening at port 3000');
+})
